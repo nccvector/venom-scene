@@ -6,6 +6,12 @@ project(venom-scene)
 # and ${EIGEN_INCLUDE_DIR}
 # ...
 
+add_subdirectory(ext)
+
+set(VenomScene_DEBUG_INCLUDE_DIRS
+  ${CMAKE_CURRENT_SOURCE_DIR}/ext/raylib
+)
+
 # Set VenomScene include directories
 set(VenomScene_INCLUDE_DIRS
   ${EIGEN_INCLUDE_DIR}
@@ -22,11 +28,14 @@ message("INCLUDE DIRs: ${VenomScene_INCLUDE_DIRS}")
 message("================================================================================")
 
 
-include_directories(${VenomScene_INCLUDE_DIRS})
+include_directories(
+  ${VenomScene_INCLUDE_DIRS}
+  ${VenomScene_DEBUG_INCLUDE_DIRS}
+)
 
 set(VenomScene_SOURCES
   src/main.cpp
 )
 
 add_executable(${PROJECT_NAME} ${VenomScene_SOURCES})
-
+target_link_libraries(${PROJECT_NAME} PUBLIC raylib)
