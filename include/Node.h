@@ -16,7 +16,6 @@ public:
   Node(Node* parent)
   {
     m_parent = parent;
-    m_transform = new Transform();
 
     // Add to parent's children list
     parent->getChildren().push_back(this);
@@ -24,7 +23,7 @@ public:
 
   ~Node() {}
 
-  Transform* getTransform()
+  Transform getTransform()
   {
     return m_transform;
   }
@@ -39,7 +38,7 @@ public:
     return m_children;
   }
 
-  void setTransform(Transform* transform)
+  void setTransform(Transform transform)
   {
     m_transform = transform;
   }
@@ -52,7 +51,7 @@ public:
 protected:
   Node* m_parent;
   std::vector<Node*> m_children;
-  Transform* m_transform;
+  Transform m_transform;
   // Also hold reference to entity ...
 };
 
@@ -62,10 +61,9 @@ public:
   RootNode()
   {
     m_parent = nullptr;
-    m_transform = new Transform();  // TODO make this identity
   }
 
-  void setTransform(Transform* transform)
+  void setTransform(Transform transform)
   {
     throw std::runtime_error("Cannot set transform of root object");
   }

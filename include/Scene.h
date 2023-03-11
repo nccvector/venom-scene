@@ -8,26 +8,25 @@ class Scene
 public:
   Scene()
   {
-    m_root = new RootNode();
   }
 
   ~Scene() {}
 
-  RootNode* getRoot()
+  RootNode& getRoot()
   {
     return m_root;
   }
 
-  Node* createNode()
+  Node createNode()
   {
-    Node* newNode = new Node(m_root);
+    Node newNode;
     m_nodes.push_back(newNode);
 
     return newNode;
   }
 
 private:
-  RootNode* m_root;
+  RootNode m_root;
   std::vector<Node> m_nodes;
 };
 }
