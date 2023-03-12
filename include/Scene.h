@@ -1,4 +1,3 @@
-
 #include "Node.h"
 
 namespace Venom::Scene
@@ -19,7 +18,7 @@ public:
 
   Node createNode()
   {
-    Node newNode;
+    Node newNode(&m_root);
     m_nodes.push_back(newNode);
 
     return newNode;

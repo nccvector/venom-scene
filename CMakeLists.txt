@@ -2,10 +2,6 @@ cmake_minimum_required(VERSION 3.0.0)
 
 project(venom-scene)
 
-# This project needs VenomCore and its vars
-# and ${EIGEN_INCLUDE_DIR}
-# ...
-
 add_subdirectory(ext)
 
 set(VenomScene_DEBUG_INCLUDE_DIRS
@@ -15,7 +11,7 @@ set(VenomScene_DEBUG_INCLUDE_DIRS
 # Set VenomScene include directories
 set(VenomScene_INCLUDE_DIRS
   ${EIGEN_INCLUDE_DIR}
-  ${VenomCore_INCLUDE_DIR}
+#  ${VenomCore_INCLUDE_DIR}
   ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 

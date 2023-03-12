@@ -7,7 +7,16 @@ int main()
   Venom::Scene::Scene scene;
   Venom::Scene::Node newSceneNode = scene.createNode();
 
-  std::cout << newSceneNode.getTransform().getData() << "\n";
+  Eigen::Matrix3d R;
+  R = Eigen::AngleAxisd(45, Eigen::Vector3d::UnitZ());
+
+  newSceneNode.getTransform().rotate(R);
+
+  std::cout << scene.getRoot().getName() << "\n";
+  std::cout << scene.getRoot().getTransform().matrix() << "\n";
+
+  std::cout << newSceneNode.getName() << "\n";
+  std::cout << newSceneNode.getTransform().matrix() << "\n";
 
   return 0;
 }
