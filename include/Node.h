@@ -1,3 +1,5 @@
+#pragma once
+
 #include <exception>
 #include <stdexcept>
 
@@ -6,9 +8,11 @@
 
 #include <Eigen/Geometry>
 
+#include "Core/Types.h"
+
 namespace Venom::Scene
 {
-typedef Eigen::Transform<double, 3, Eigen::Affine> Transform;
+typedef Eigen::Transform<Venom::Core::Scalar, 3, Eigen::Affine> Transform;
 
 class Node
 {
