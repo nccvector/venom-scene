@@ -6,13 +6,10 @@
 #include <vector>
 #include <string>
 
-#include <Eigen/Geometry>
-
 #include "Core/Types.h"
 
 namespace Venom::Scene
 {
-typedef Eigen::Transform<Venom::Core::Scalar, 3, Eigen::Affine> Transform;
 
 class Node
 {
@@ -24,7 +21,7 @@ public:
   {
     m_name = "Node";
 
-    m_transform = Transform::Identity();
+    m_transform = Venom::Core::Transform::Identity();
 
     m_parent = parent;
 
@@ -41,7 +38,7 @@ public:
 
   ~Node() {}
 
-  Transform& getTransform()
+  Venom::Core::Transform& getTransform()
   {
     return m_transform;
   }
@@ -61,7 +58,7 @@ public:
     return m_name;
   }
 
-  void setTransform(Transform& transform)
+  void setTransform(Venom::Core::Transform& transform)
   {
     m_transform = transform;
   }
@@ -74,7 +71,7 @@ public:
 protected:
   Node* m_parent;
   std::vector<Node*> m_children;
-  Transform m_transform;
+  Venom::Core::Transform m_transform;
 
   std::string m_name;
 
@@ -89,7 +86,7 @@ public:
   {
   }
 
-  void setTransform(Transform& transform)
+  void setTransform(Venom::Core::Transform& transform)
   {
     throw std::runtime_error("Cannot set transform of root object");
   }
